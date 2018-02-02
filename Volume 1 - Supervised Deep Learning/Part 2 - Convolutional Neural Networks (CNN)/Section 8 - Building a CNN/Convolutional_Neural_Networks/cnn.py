@@ -24,4 +24,17 @@ from keras.layers import Dense
 classifier = Sequential()
 
 #Adding convulution
-classifier.add(Convolution2D(32, 3 , 3,input_shape(64,64,3), activation='relu'))
+classifier.add(Convolution2D(32,(3,3),input_shape=(64,64,3), activation='relu'))
+#Max Pooling Step,
+classifier.add(MaxPooling2D(pool_size = (2,2)))
+#Flattening step
+classifier.add(Flatten())
+#Step 4 Fully Connect
+classifier.add(Dense(activation='relu', units = 128))
+#One node expects dog or cat on this layer 
+classifier.add(Dense(activation='sigmoid', units = 1 ))
+
+
+
+
+
